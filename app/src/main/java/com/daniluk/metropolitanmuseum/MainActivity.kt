@@ -12,11 +12,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel.objects.observe(this, {
+        viewModel.listShowpieces.observe(this, {
             tvTemp.text = it.total.toString()
         })
 
-        viewModel.getListObjects()
+        viewModel.showpiece.observe(this, {
+            tvTemp.text = it.title
+        })
+
+        //viewModel.getListShowpieces()
+        viewModel.getListShowpieces("", 5, 1)
+        //viewModel.getShowpiece("5")
+
+
 
     }
 }

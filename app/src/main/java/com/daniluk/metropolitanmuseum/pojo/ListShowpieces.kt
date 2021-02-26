@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
 
 
 
-data class Objects(
+data class ListShowpieces(
     @SerializedName("total")
     @Expose
     val total: Int? = null,

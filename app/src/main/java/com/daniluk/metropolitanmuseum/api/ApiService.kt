@@ -3,12 +3,28 @@ package com.daniluk.metropolitanmuseum.api
 //https://metmuseum.github.io/
 //Урок от microsoft по API
 //https://docs.microsoft.com/ru-ru/learn/modules/use-apis-discover-museum-art/
-import androidx.lifecycle.LiveData
-import com.daniluk.metropolitanmuseum.pojo.Objects
+import com.daniluk.metropolitanmuseum.pojo.ListShowpieces
+import com.daniluk.metropolitanmuseum.pojo.Showpiece
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
+    //получить список объектов
+//    @GET("objects")
+//    fun getListShowpiecesApi(): Call<ListShowpieces>
     @GET("objects")
-    fun getListObjectsApi(): Call<Objects>
+    fun getListShowpiecesApi(
+        @Query("metadataDate") metadataDate: String = "",
+        @Query("departmentIds") departmentIds: String = ""
+    ): Call<ListShowpieces>
+
+    //получить объект
+    @GET("objects/{objectID}" )
+    fun getShowpieceApi(
+        @Path("objectID")
+        objectID: String
+    ): Call<Showpiece>
+
 }
