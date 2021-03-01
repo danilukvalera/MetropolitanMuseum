@@ -32,6 +32,10 @@ class MuseumViewModel(application: Application): AndroidViewModel(application) {
     var showpiece = MutableLiveData<Showpiece>()
     val apiService = ApiFactory.apiService
 
+    init {
+        getListDepartments()
+    }
+
     //Преобразовать список чисел в строку с разделителем "|"
     private fun listToStringSeparate(listInteger: IntArray): String {
         val stringBuilder = StringBuilder()
