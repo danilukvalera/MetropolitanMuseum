@@ -4,7 +4,7 @@ package com.daniluk.metropolitanmuseum.api
 //Урок от microsoft по API
 //https://docs.microsoft.com/ru-ru/learn/modules/use-apis-discover-museum-art/
 import com.daniluk.metropolitanmuseum.pojo.ListDepartments
-import com.daniluk.metropolitanmuseum.pojo.ListShowpieces
+import com.daniluk.metropolitanmuseum.pojo.ListNumberShowpieces
 import com.daniluk.metropolitanmuseum.pojo.Showpiece
 import retrofit2.Call
 import retrofit2.http.GET
@@ -15,10 +15,10 @@ import retrofit2.http.QueryMap
 interface ApiService {
     //получить список объектов
     @GET("objects")
-    fun getListShowpiecesApi(
+    fun getListNumbersShowpiecesApi(
         @Query("metadataDate") metadataDate: String = "", //после даты (в формате YYYY-MM-DD)
         @Query("departmentIds") departmentIds: String = "" //номера департаментов (разделенные символом "|" 2|3|5)
-    ): Call<ListShowpieces>
+    ): Call<ListNumberShowpieces>
 
     //получить объект
     @GET("objects/{objectID}" )
@@ -32,15 +32,13 @@ interface ApiService {
     fun getListDepartmentsApi(): Call<ListDepartments>
 
     //поиск
-    //@GET("https://collectionapi.metmuseum.org/public/collection/v1/search?medium=Quilts|Silk|Bedcovers&q=quilt")
-    //@GET("https://collectionapi.metmuseum.org/public/collection/v1/search?isHighlight=true&q=sunflowers")
     @GET("search")
-    fun searchShowpiecesApi(
+    fun searchNumbersShowpiecesApi(
             @QueryMap optionsSearchBoolean: Map<String, Boolean> = hashMapOf(),
             @QueryMap optionsSearchInteger: Map<String, Int> = hashMapOf(),
             @QueryMap optionsSearchString: Map<String, String> = hashMapOf(),
             @Query("q") stringSearch: String
-    ): Call<ListShowpieces>
+    ): Call<ListNumberShowpieces>
 
     companion object{
         //опции поиска экспонатов

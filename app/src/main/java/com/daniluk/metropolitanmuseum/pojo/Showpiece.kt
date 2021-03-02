@@ -38,11 +38,11 @@ data class Showpiece(
 
     @SerializedName("additionalImages")
     @Expose
-    val additionalImages: List<Showpiece>? = null,
+    val additionalImages: List<Any>? = null,
 
     @SerializedName("constituents")
     @Expose
-    val constituents: Showpiece? = null,
+    val constituents: Any? = null,
 
     @SerializedName("department")
     @Expose
@@ -222,7 +222,7 @@ data class Showpiece(
 
     @SerializedName("tags")
     @Expose
-    val tags: Showpiece? = null,
+    val tags: List<Tag>? = null,
 
     @SerializedName("objectWikidata_URL")
     @Expose
