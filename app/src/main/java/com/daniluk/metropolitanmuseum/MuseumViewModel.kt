@@ -34,6 +34,9 @@ class MuseumViewModel(application: Application): AndroidViewModel(application) {
     var listShowpieces = MutableLiveData<ArrayList<Showpiece>>()
     var currentDepartment = -1
 
+    var displayDepartmentShowpieceHeight = -1
+    var displayDepartmentShowpieceWidth = -1
+
     val apiService = ApiFactory.apiService
 
 

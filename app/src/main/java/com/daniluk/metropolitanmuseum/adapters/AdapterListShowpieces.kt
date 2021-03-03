@@ -1,9 +1,11 @@
 package com.daniluk.metropolitanmuseum.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.daniluk.metropolitanmuseum.MuseumViewModel
 import com.daniluk.metropolitanmuseum.R
 import com.daniluk.metropolitanmuseum.pojo.Showpiece
 import com.squareup.picasso.Picasso
@@ -32,6 +34,12 @@ class AdapterListShowpieces: RecyclerView.Adapter<AdapterListShowpieces.Showpiec
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShowpieceHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_showpieces, parent, false)
+
+        view.rootContainer.maxHeight = MuseumViewModel.viewModel.displayDepartmentShowpieceHeight
+        view.rootContainer.maxWidth = MuseumViewModel.viewModel.displayDepartmentShowpieceWidth
+//        Log.d(MuseumViewModel.LOG_TEG, "displayHeight = ${MuseumViewModel.viewModel.displayDepartmentShowpieceHeight}, displayWidth = ${MuseumViewModel.viewModel.displayDepartmentActivityWidth}")
+//        Log.d(MuseumViewModel.LOG_TEG, "ShowpieceHeight = ${view.rootContainer.maxHeight}, ShowpieceWidth = ${view.rootContainer.maxWidth}")
+
         return ShowpieceHolder(view)
     }
 

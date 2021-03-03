@@ -21,8 +21,8 @@ class AdapterListDepartments: RecyclerView.Adapter<AdapterListDepartments.Depart
 
         init {
             itemView.setOnClickListener {
-                val id = listDepartments.get(adapterPosition).departmentId ?: return@setOnClickListener
-                context.startActivity(DepartmentActivity.getIntent(context, id))
+                val positionDepartment = adapterPosition
+                context.startActivity(DepartmentActivity.getIntent(context, positionDepartment))
             }
         }
     }
