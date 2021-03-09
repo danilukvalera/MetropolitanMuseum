@@ -66,7 +66,7 @@ class DepartmentActivity : AppCompatActivity() {
 
             viewModel.listShowpieces.observe(this, {
                 if (it.isEmpty() || it == null) return@observe
-                Log.d(LOG_TEG, "Добавлен экспонат")
+                //Log.d(LOG_TEG, "Добавлен экспонат")
                 adapterListShowpieces.listShowpieces = it
             })
 
