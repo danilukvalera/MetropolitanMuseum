@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.daniluk.metropolitanmuseum.DepartmentActivity
+import com.daniluk.metropolitanmuseum.MuseumViewModel
 import com.daniluk.metropolitanmuseum.R
 import com.daniluk.metropolitanmuseum.pojo.Department
 import kotlinx.android.synthetic.main.item_list_departments.view.*
@@ -22,6 +23,7 @@ class AdapterListDepartments: RecyclerView.Adapter<AdapterListDepartments.Depart
         init {
             itemView.setOnClickListener {
                 val positionDepartment = adapterPosition
+                MuseumViewModel.viewModel.currentPositionListShowpieces = 0
                 context.startActivity(DepartmentActivity.getIntent(context, positionDepartment))
             }
         }

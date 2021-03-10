@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.daniluk.metropolitanmuseum.MuseumViewModel
 import com.daniluk.metropolitanmuseum.R
+import com.daniluk.metropolitanmuseum.ShowpieceActivity
 import com.daniluk.metropolitanmuseum.pojo.Showpiece
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_list_showpieces.view.*
+import java.util.*
 
 class AdapterListShowpieces: RecyclerView.Adapter<AdapterListShowpieces.ShowpieceHolder>() {
     var listShowpieces = listOf<Showpiece>()
@@ -18,6 +20,12 @@ class AdapterListShowpieces: RecyclerView.Adapter<AdapterListShowpieces.Showpiec
             notifyDataSetChanged()
         }
 
+    var showpieceOnClickListener: ShowpieceOnClickListener? = null
+
+    interface ShowpieceOnClickListener{
+        fun showpieceOnClick(objectId: Int)
+    }
+
     inner class ShowpieceHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val nameShowpiece = itemView.tvNameShowpiece
         val  imageShowpiece = itemView.ivListShowpieces
@@ -25,8 +33,10 @@ class AdapterListShowpieces: RecyclerView.Adapter<AdapterListShowpieces.Showpiec
 
         init {
             itemView.setOnClickListener {
-//                val id = listShowpieces.get(adapterPosition).departmentId ?: return@setOnClickListener
-//                context.startActivity(DepartmentActivity.getIntent(context, id))
+                val id = listShowpieces.get(adapterPosition).objectID ?: return@setOnClickListener
+                showpieceOnClickListener?.showpieceOnClick(id)
+                //MuseumViewModel.viewModel.currentPositionListShowpieces = findFirstCompletelyVisibleItemPosition()
+                //context.startActivity(ShowpieceActivity.getIntent(context, id))
             }
         }
 

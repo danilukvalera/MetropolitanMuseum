@@ -4,7 +4,6 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.daniluk.metropolitanmuseum.api.ApiFactory
 import com.daniluk.metropolitanmuseum.api.ApiService.Companion.QUERY_PARAM_ARTIST_OR_CULTURE
@@ -31,7 +30,8 @@ class MuseumViewModel(application: Application): AndroidViewModel(application) {
     var listNumbersSearchShowpieces = MutableLiveData<ListNumberShowpieces>()
     var listDepartments = MutableLiveData<ListDepartments>()
     var showpiece = MutableLiveData<Showpiece>()
-    var listShowpieces = MutableLiveData<ArrayList<Showpiece>>()
+    var currentListShowpieces = MutableLiveData<ArrayList<Showpiece>>()
+    var currentPositionListShowpieces = 0
     var currentDepartment = -1
 
     var displayDepartmentShowpieceHeight = -1
@@ -191,7 +191,7 @@ class MuseumViewModel(application: Application): AndroidViewModel(application) {
     //получить все экспонаты в заданном Department
     fun getAllShowpiecesFromDepartment(idDepartment: Int){
         listNumbersShowpieces.value = null
-        listShowpieces.value?.clear()
+        currentListShowpieces.value?.clear()
 
         var numberShowpieces = 0
         val downloadedShowpieces = arrayListOf<Showpiece>()
@@ -234,7 +234,7 @@ class MuseumViewModel(application: Application): AndroidViewModel(application) {
                     }
                 }()
                 downloadedShowpieces.add(showpiece.value?: continue)
-                listShowpieces.value = downloadedShowpieces
+                currentListShowpieces.value = downloadedShowpieces
 
                 numberShowpieces++
                 if (numberShowpieces ==10){
