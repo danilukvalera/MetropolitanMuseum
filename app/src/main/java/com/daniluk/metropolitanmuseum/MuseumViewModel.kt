@@ -86,7 +86,7 @@ class MuseumViewModel(application: Application): AndroidViewModel(application) {
 
         apiService.getListNumbersShowpiecesApi(metadataDate, departmentIds).enqueue(object: retrofit2.Callback<ListNumberShowpieces> {
             override fun onResponse(call: Call<ListNumberShowpieces>, response: Response<ListNumberShowpieces>) {
-                Log.d(LOG_TEG, "Загрузка списка номеров экспонатов успешна")
+                //Log.d(LOG_TEG, "Загрузка списка номеров экспонатов успешна")
                 listNumbersShowpieces.postValue(response.body())
             }
 
@@ -102,7 +102,7 @@ class MuseumViewModel(application: Application): AndroidViewModel(application) {
     fun getShowpiece(objectID: String){
         apiService.getShowpieceApi(objectID).enqueue(object: Callback<Showpiece> {
             override fun onResponse(call: Call<Showpiece>, response: Response<Showpiece>) {
-                Log.d(LOG_TEG, "Загрузка экспоната успешна")
+                //Log.d(LOG_TEG, "Загрузка экспоната успешна")
                 showpiece.postValue(response.body())
             }
 
@@ -118,7 +118,7 @@ class MuseumViewModel(application: Application): AndroidViewModel(application) {
     fun  getListDepartments(){
         apiService.getListDepartmentsApi().enqueue(object: Callback<ListDepartments>{
             override fun onResponse(call: Call<ListDepartments>, response: Response<ListDepartments>) {
-                Log.d(LOG_TEG, "Загрузка списка Departments успешна")
+                //Log.d(LOG_TEG, "Загрузка списка Departments успешна")
                 listDepartments.postValue(response.body())
             }
 
@@ -206,7 +206,7 @@ class MuseumViewModel(application: Application): AndroidViewModel(application) {
                         //счетчик на 5 с, max время ожидания приема данных
                         delay(100)
                         i++
-                        Log.d(LOG_TEG, "ждем listNumbersShowpieces...")
+                        //Log.d(LOG_TEG, "ждем listNumbersShowpieces...")
                         if (i > 50) {
                             Log.d(LOG_TEG, "Превышено время ожидания загрузки listNumbersShowpieces (T > 5 c)")
                             return@withContext
@@ -225,7 +225,7 @@ class MuseumViewModel(application: Application): AndroidViewModel(application) {
                             //счетчик на 5 с, max время ожидания приема данных
                             delay(100)
                             i++
-                            Log.d(LOG_TEG, "ждем showpiece...")
+                            //Log.d(LOG_TEG, "ждем showpiece...")
                             if (i > 50) {
                                 Log.d(LOG_TEG, "Превышено время ожидания загрузки showpiece (T > 5 c)")
                                 continue

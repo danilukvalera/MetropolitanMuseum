@@ -68,7 +68,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     //android architecture components
-    def lifecycle_version = "2.2.0"
+    def lifecycle_version = "2.3.0"
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData
@@ -87,5 +87,9 @@ dependencies {
 
     //picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+
 
 }

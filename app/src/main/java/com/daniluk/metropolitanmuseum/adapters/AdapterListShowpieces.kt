@@ -5,12 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.daniluk.metropolitanmuseum.MuseumViewModel
 import com.daniluk.metropolitanmuseum.R
 import com.daniluk.metropolitanmuseum.ShowpieceActivity
 import com.daniluk.metropolitanmuseum.pojo.Showpiece
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_list_showpieces.view.*
+import java.lang.Exception
 import java.util.*
 
 class AdapterListShowpieces: RecyclerView.Adapter<AdapterListShowpieces.ShowpieceHolder>() {
@@ -57,7 +60,12 @@ class AdapterListShowpieces: RecyclerView.Adapter<AdapterListShowpieces.Showpiec
         holder.nameShowpiece.text = listShowpieces.get(position).title
         val strUrl = listShowpieces.get(position).primaryImageSmall
         if (strUrl != null && !strUrl.isEmpty()) {
-            Picasso.get().load(listShowpieces.get(position).primaryImageSmall).into(holder.imageShowpiece)
+            //Picasso.get().load(listShowpieces.get(position).primaryImageSmall).placeholder(android.R.drawable.stat_sys_download).error(android.R.drawable.stat_notify_error).into(holder.imageShowpiece)
+            Picasso.get().load(listShowpieces.get(position).primaryImageSmall).error(android.R.drawable.stat_notify_error).into(holder.imageShowpiece)
+            //Log.d(MuseumViewModel.LOG_TEG, "position = $position; drawable = ${holder.imageShowpiece}")
+            //Glide.with(holder.context).load(listShowpieces.get(position).primaryImageSmall).placeholder(android.R.drawable.stat_sys_download).error(android.R.drawable.stat_notify_error).into(holder.imageShowpiece)
+        }else{
+            holder.imageShowpiece.setImageDrawable(holder.context.getDrawable(android.R.drawable.btn_minus))
         }
     }
 

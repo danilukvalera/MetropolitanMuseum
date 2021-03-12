@@ -38,7 +38,7 @@ data class Showpiece(
 
     @SerializedName("additionalImages")
     @Expose
-    val additionalImages: List<Any>? = null,
+    val additionalImages: List<String?>? = null,
 
     @SerializedName("constituents")
     @Expose
