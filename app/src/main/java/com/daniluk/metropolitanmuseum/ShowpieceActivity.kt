@@ -42,7 +42,7 @@ class ShowpieceActivity : AppCompatActivity(), ViewSwitcher.ViewFactory, Gesture
 
         supportActionBar?.title = showpiece?.title ?: ""
         //Picasso.get().load(showpiece?.primaryImageSmall).into(ivShowpieces)
-        Glide.with(this).load(showpiece?.primaryImageSmall).placeholder(android.R.drawable.stat_sys_download).into(ivShowpieces)
+        //Glide.with(this).load(showpiece?.primaryImageSmall).placeholder(android.R.drawable.stat_sys_download).into(ivShowpieces)
 
         imageSwitcher.setFactory(this)
         gestureDetector = GestureDetector(this, this)
